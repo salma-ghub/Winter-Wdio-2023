@@ -1,5 +1,5 @@
 /**
- * mocha - is a test automation framework, using which we can automate testcases.
+ * mocha - is a test automation framework, using which we can use to automate testcases.
  * 
  * describe - refers to the Test suite
  * it - refers to the Testcase
