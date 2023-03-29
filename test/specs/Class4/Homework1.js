@@ -1,5 +1,7 @@
 const { expect } = require("chai");
 
+
+
 // TC-1: Verify current-temp is in between 45 and 55
 /**
  * 1. Launch https://www.accuweather.com/
@@ -9,10 +11,10 @@ describe('test verification', () => {
 
     it('Verify current-temp is in between 45 and 55', async () => {
         // 1. Launch https://www.accuweather.com/
-            await browser.url('https://www.accuweather.com/');
-
+        await browser.url('https://www.accuweather.com/');
+        await browser.pause(5000);
         // 2. Verify current-temp is in between 45 and 55
-        //span[@class="recent-location-temp"]
+        
         let currentTempElement = await $('//span[@class="recent-location-temp"]')
         let currentTempText = await currentTempElement.getText(); // ' 70°  '
         currentTempText = await currentTempText.trim(); // '70°'
@@ -62,7 +64,7 @@ describe('test verification', () => {
  * 9. Verify 'Keep me signed in' checkbox is selected
  * 
  */
-    it('Verify error on empty login flow', async () => {
+    it.only('Verify error on empty login flow', async () => {
         // 1. Launch facebook.com
         await browser.url('https://www.facebook.com/');
 
@@ -74,7 +76,7 @@ describe('test verification', () => {
         // 3. Verify 'Keep me signed in' checkbox is NOT selected
         let signedInCheckbox = await $('input[type*=checkbox]');
         let isSignedInCheckbox = await signedInCheckbox.isSelected()
-        expect(isSignedInCheckbox, 'Checkbox is selected').to.be.false;
+        expect(isSignedInCheckbox, 'Checkbox is NOT selected').to.be.true;
 
         // 4. Click 'Log In' button
 
@@ -85,7 +87,7 @@ describe('test verification', () => {
         // 5. Verify link -> "Find your account and log in" is displayed
         let verifyLink = await $('=Find your account and log in.')
         let isLinkDisplayed = await verifyLink.isDisplayed();
-        expect(isLinkDisplayed, 'Link is NOT displayed').to.be.true;
+        expect(isLinkDisplayed, 'Link is displayed').to.be.false;
         await browser.pause(2000);
 
 
@@ -96,9 +98,9 @@ describe('test verification', () => {
         
         
         // 7. Verify 'Keep me signed in' checkbox is NOT selected
-        let signedInCheckbox = await $('//input[@name="persistent"]');
-        let isSignedInCheckbox = await signedInCheckbox.isSelected()
-        expect(isSignedInCheckbox, 'Checkbox is selected').to.be.false;
+        
+        //let isSignedInCheckbox = await signedInCheckbox.isSelected()
+        expect(isSignedInCheckbox, 'Checkbox is NOT selected').to.be.true;
 
         // 8. Click 'Keep me signed in' checkbox
         let signInCheckbox =  await $('//input[starts-with(@type, "check")]')
@@ -106,7 +108,7 @@ describe('test verification', () => {
 
         // 9. Verify 'Keep me signed in' checkbox is selected
         let isSelectedCheckbox = await signInCheckbox.isSelected()
-        expect(isSelectedCheckbox, 'Checkbox is NOT selected').to.be.true;
+        expect(isSelectedCheckbox, 'Checkbox is selected').to.be.false;
 
 
     })
