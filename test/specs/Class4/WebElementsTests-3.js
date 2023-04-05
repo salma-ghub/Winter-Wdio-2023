@@ -68,7 +68,7 @@ describe('Simple-xpath locator strategies', () => {
         const loginBtnText = await loginBtnElement.getText();
         expect(loginBtnText, 'Login button has different text than expected').to.be.equal("Log In");
     });
-
+dis
     // Verify current temp is less than or equals to feel-like temp
     /**
      * 1. Launch https://www.accuweather.com/
